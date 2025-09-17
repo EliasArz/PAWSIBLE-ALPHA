@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7991e5d2193dc424dbf9a317d535c930
+guid: aa4503153cfdff04690b629f8b529768
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,13 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material #38
-    second: {fileID: 2100000, guid: 2430cc8f4af7b994f80a4eb79098fae2, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material #4
-    second: {fileID: 2100000, guid: 3d7be5120b408bc4fbcf9af647d60240, type: 2}
+      name: _x0023_BALUSTERcon_rostf.jpg1111
+    second: {fileID: 2100000, guid: b8e6d4de0372fc64fa2e221bce4a8ada, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
