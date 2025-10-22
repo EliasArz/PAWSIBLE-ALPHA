@@ -1,10 +1,12 @@
 using UnityEngine;
 using System.Collections;
 
-public class DrPawsPathWalker : MonoBehaviour
+public class DrPawsPathWalker_Quiz : MonoBehaviour
 {
     [Header("XR Socket Settings")]
-    // (Future XR socket settings here)
+public GameObject xrSocket;      // Assign your XR socket here
+public GameObject boneObject;    // Assign the bone GameObject here
+
 
     [Header("Path Settings")]
     public Transform[] pathPoints;
@@ -84,27 +86,93 @@ public class DrPawsPathWalker : MonoBehaviour
         }
     }
 
-    private IEnumerator HandlePointReachedWithDelay(int pointIndex)
+    private IEnumerator HandlePointReachedWithDelay(int index)
     {
         isPaused = true;
         isMoving = false;
         animator?.SetBool("isWalking", false);
 
-        // Add small delay to simulate brief pause (optional)
-        yield return new WaitForSeconds(0);
+        Transform lookTarget = pathPoints[index]; // so Dr. Paws faces the current object
+        if (lookTarget != null)
+        {
+            Vector3 lookDirection = (lookTarget.position - transform.position).normalized;
+            lookDirection.y = 0;
+            if (lookDirection != Vector3.zero)
+            {
+                Quaternion lookRotation = Quaternion.LookRotation(lookDirection);
+                transform.rotation = lookRotation;
+            }
+        }
+
+        switch (index)
+        {
+        case 1:
+    // 🦴 Play grab animation first
+    animator.SetBool("isGrabBone", true);
+    Debug.Log("🦴 Dr. Paws starts grabbing bone...");
+    yield return new WaitForSeconds(1.2f); // wait before attaching
+    
+    // Attach bone mid-animation
+
+    Debug.Log("🦴 Bone successfully attached.");
+
+    yield return new WaitForSeconds(1.3f); // small delay to finish grab animation
+    animator.SetBool("isGrabBone", false);
+    break;
+
+
+            case 2:
+
+
+    break;
+            case 3:
+                    // 🐾 Put the bone
+                animator.SetBool("isPuttingBone", true);
+                Debug.Log("🐾 Dr. Paws puts the bone.");
+                yield return new WaitForSeconds(3f);
+                 animator.SetBool("isPuttingBone", false);
+                // 🧩 Disable socket and physics control
+    if (xrSocket != null)
+    {
+        xrSocket.SetActive(false); // disable XR socket
+        Debug.Log("🧩 XR Socket disabled.");
+    }
+
+    // disable isKinematic so bone falls or stays released
+    if (boneObject != null)
+    {
+        Rigidbody rb = boneObject.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.isKinematic = false;
+            Debug.Log("💥 Bone physics re-enabled (isKinematic = false).");
+        }
+    }
+
+    yield return new WaitForSeconds(1.5f);
+
+      break;
+
+          
+
+            case 4:
+                // 💤 Idle at final point
+                animator.SetBool("isWalking", false);
+                Debug.Log("😴 Dr. Paws goes idle at destination.");
+                yield return new WaitForSeconds(2f);
+                break;
+        }
 
         // Resume walking if not finished
-        if (currentPoint < pathPoints.Length - 1)
+        if (index < pathPoints.Length - 1)
         {
             isPaused = false;
             animator?.SetBool("isWalking", true);
-            Debug.Log($"▶️ Resuming from point {pointIndex}");
         }
         else
         {
             animator?.SetBool("isWalking", false);
             canMove = false; // stop permanently
-            Debug.Log("🏁 Finished all points!");
         }
     }
 
@@ -113,25 +181,10 @@ public class DrPawsPathWalker : MonoBehaviour
     {
         canMove = true;
         animator?.SetBool("isWalking", true);
-        animator?.SetBool("isGrabBone", false);
-        animator?.SetBool("isGreetings", false);
-      
+        animator.SetBool("isGrabBone", false);
         Debug.Log("🎬 Timeline Trigger: Dr. Paws starts moving!");
     }
-
-    public void Greetings()
-    {
-
-        animator?.SetBool("isGreetings", true);
-
-
-    }
-      public void OpeningDoor()
-    {
-
-        animator?.SetBool("isOpeningDoor", true);
-
-    }
+  
     public void StopWalkingFromTimeline()
     {
         canMove = false;
@@ -143,7 +196,6 @@ public class DrPawsPathWalker : MonoBehaviour
     void OnDrawGizmos()
     {
         if (pathPoints == null || pathPoints.Length < 2) return;
-
         Gizmos.color = Color.cyan;
         for (int i = 0; i < pathPoints.Length - 1; i++)
         {
