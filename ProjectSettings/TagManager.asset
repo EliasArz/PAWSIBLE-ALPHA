@@ -19,6 +19,10 @@ TagManager:
   - Stomach
   - DAPVial
   - DiluentVial
+  - Syringe
+  - DogAnalZone
+  - Thermometer
+  - ThermometerTip
   layers:
   - Default
   - TransparentFX
