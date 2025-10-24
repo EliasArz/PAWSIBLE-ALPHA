@@ -4,7 +4,12 @@
 AnimatorController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
+<<<<<<< HEAD
   m_PrefabInternal: {fileID: 0}
+=======
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+>>>>>>> 1d9e94275dfe260f498f0e4f2ee682b7432b9aea
   m_Name: openandclose
   serializedVersion: 5
   m_AnimatorParameters: []
@@ -23,10 +28,18 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
 --- !u!1102 &1102084173109159466
 AnimatorState:
+<<<<<<< HEAD
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
+=======
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+>>>>>>> 1d9e94275dfe260f498f0e4f2ee682b7432b9aea
   m_Name: Opening
   m_Speed: 1
   m_CycleOffset: 0
@@ -48,10 +61,18 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102316978540719434
 AnimatorState:
+<<<<<<< HEAD
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
+=======
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+>>>>>>> 1d9e94275dfe260f498f0e4f2ee682b7432b9aea
   m_Name: Idle
   m_Speed: 1
   m_CycleOffset: 0
@@ -73,10 +94,18 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102818520107960090
 AnimatorState:
+<<<<<<< HEAD
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
+=======
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+>>>>>>> 1d9e94275dfe260f498f0e4f2ee682b7432b9aea
   m_Name: Closing
   m_Speed: 1
   m_CycleOffset: 0
@@ -98,10 +127,18 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1107 &1107283027729849398
 AnimatorStateMachine:
+<<<<<<< HEAD
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
+=======
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+>>>>>>> 1d9e94275dfe260f498f0e4f2ee682b7432b9aea
   m_Name: Base Layer
   m_ChildStates:
   - serializedVersion: 1
@@ -119,7 +156,11 @@ AnimatorStateMachine:
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 120, y: 48, z: 0}
+<<<<<<< HEAD
   m_EntryPosition: {x: 132, y: 108, z: 0}
+=======
+  m_EntryPosition: {x: 130, y: 100, z: 0}
+>>>>>>> 1d9e94275dfe260f498f0e4f2ee682b7432b9aea
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 1102316978540719434}

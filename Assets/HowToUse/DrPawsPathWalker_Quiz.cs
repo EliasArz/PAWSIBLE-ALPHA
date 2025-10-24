@@ -4,10 +4,16 @@ using System.Collections;
 public class DrPawsPathWalker_Quiz : MonoBehaviour
 {
     [Header("XR Socket Settings")]
+<<<<<<< HEAD
 public GameObject xrSocket;      // Assign your XR socket here
 public GameObject boneObject;    // Assign the bone GameObject here
 
 
+=======
+    public GameObject xrSocket;      // Assign your XR socket here
+    public GameObject boneObject;    // Assign the bone GameObject here
+    public GameObject StomachObject;   
+>>>>>>> 1d9e94275dfe260f498f0e4f2ee682b7432b9aea
     [Header("Path Settings")]
     public Transform[] pathPoints;
     [Range(0.1f, 5f)] public float speed = 1.2f;
@@ -92,11 +98,20 @@ public GameObject boneObject;    // Assign the bone GameObject here
         isMoving = false;
         animator?.SetBool("isWalking", false);
 
+<<<<<<< HEAD
         Transform lookTarget = pathPoints[index]; // so Dr. Paws faces the current object
+=======
+        // Make Dr. Paws face the current object
+        Transform lookTarget = pathPoints[index];
+>>>>>>> 1d9e94275dfe260f498f0e4f2ee682b7432b9aea
         if (lookTarget != null)
         {
             Vector3 lookDirection = (lookTarget.position - transform.position).normalized;
             lookDirection.y = 0;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1d9e94275dfe260f498f0e4f2ee682b7432b9aea
             if (lookDirection != Vector3.zero)
             {
                 Quaternion lookRotation = Quaternion.LookRotation(lookDirection);
@@ -106,6 +121,7 @@ public GameObject boneObject;    // Assign the bone GameObject here
 
         switch (index)
         {
+<<<<<<< HEAD
         case 1:
     // 🦴 Play grab animation first
     animator.SetBool("isGrabBone", true);
@@ -161,6 +177,104 @@ public GameObject boneObject;    // Assign the bone GameObject here
                 Debug.Log("😴 Dr. Paws goes idle at destination.");
                 yield return new WaitForSeconds(2f);
                 break;
+=======
+
+            case 1:
+                break;
+
+            case 2:
+                Debug.Log("🦴 CHECKPOINT1");
+                // 🦴 Play grab animation first
+                animator.SetBool("isGrabBone", true);
+                Debug.Log("🦴 Dr. Paws starts grabbing bone...");
+                yield return new WaitForSeconds(1.2f);
+
+                // Attach bone mid-animation
+                Debug.Log("🦴 Bone successfully attached.");
+
+                yield return new WaitForSeconds(1.3f); // Finish grab animation
+                animator.SetBool("isGrabBone", false);
+                break;
+
+            case 3:
+             Debug.Log("🦴 CHECKPOINT2");
+                break;
+
+            case 4:
+                Debug.Log("🦴 CHECKPOINT3");
+                animator.SetBool("isPuttingBone", true);
+                Debug.Log("🐾 Dr. Paws puts the bone.");
+                yield return new WaitForSeconds(3f);
+                animator.SetBool("isPuttingBone", false);
+
+                // 🧩 Disable socket and physics control
+                if (xrSocket != null)
+                {
+                    xrSocket.SetActive(false);
+                    Debug.Log("🧩 XR Socket disabled.");
+                }
+
+                if (boneObject != null)
+                {
+                    Rigidbody rb = boneObject.GetComponent<Rigidbody>();
+                    if (rb != null)
+                    {
+                        rb.isKinematic = false;
+                        Debug.Log("💥 Bone physics re-enabled (isKinematic = false).");
+                    }
+                }
+
+                yield return new WaitForSeconds(1.5f);
+                break;
+
+            case 5:
+                 
+                xrSocket.SetActive(true);
+
+                // 🦴 Play grab animation first
+                animator.SetBool("isGrabBone", true);
+                Debug.Log("🦴 Dr. Paws starts grabbing Stomach...");
+                yield return new WaitForSeconds(1.2f);
+
+                Debug.Log("🦴 Stomach successfully attached.");
+
+                yield return new WaitForSeconds(1.3f); // Finish grab animation
+                animator.SetBool("isGrabBone", false);
+
+                break;
+
+            case 6:
+            Debug.Log("🦴 CHECKPOINT5");
+
+                break;
+
+            case 7:
+                Debug.Log("🦴 CHECKPOINT6");
+                animator.SetBool("isPuttingBone", true);
+                Debug.Log("🐾 Dr. Paws puts the Stomach.");
+                yield return new WaitForSeconds(3f);
+                animator.SetBool("isPuttingBone", false);
+
+            
+
+                if (xrSocket != null)
+                {
+                    xrSocket.SetActive(false);
+                    Debug.Log("🧩 XR Socket disabled.");
+                }
+
+                if (StomachObject != null)
+                {
+                    Rigidbody rb = StomachObject.GetComponent<Rigidbody>();
+                    if (rb != null)
+                    {
+                        rb.isKinematic = false;
+                        Debug.Log("💥 Bone physics re-enabled (isKinematic = false).");
+                    }
+                }
+                break;
+                
+>>>>>>> 1d9e94275dfe260f498f0e4f2ee682b7432b9aea
         }
 
         // Resume walking if not finished
@@ -172,19 +286,34 @@ public GameObject boneObject;    // Assign the bone GameObject here
         else
         {
             animator?.SetBool("isWalking", false);
+<<<<<<< HEAD
             canMove = false; // stop permanently
+=======
+            canMove = false; // Stop permanently
+>>>>>>> 1d9e94275dfe260f498f0e4f2ee682b7432b9aea
         }
     }
 
     // ✅ Timeline triggers
     public void StartWalkingFromTimeline()
     {
+<<<<<<< HEAD
         canMove = true;
         animator?.SetBool("isWalking", true);
         animator.SetBool("isGrabBone", false);
         Debug.Log("🎬 Timeline Trigger: Dr. Paws starts moving!");
     }
   
+=======
+        animator.speed = 1f;
+        canMove = true;
+        animator?.SetBool("isWalking", true);
+        animator.SetBool("isGrabBone", false);
+        animator.SetBool("isSimpleGreetings", false);
+        Debug.Log("🎬 Timeline Trigger: Dr. Paws starts moving!");
+    }
+
+>>>>>>> 1d9e94275dfe260f498f0e4f2ee682b7432b9aea
     public void StopWalkingFromTimeline()
     {
         canMove = false;
@@ -192,10 +321,24 @@ public GameObject boneObject;    // Assign the bone GameObject here
         animator?.SetBool("isWalking", false);
         Debug.Log("⏸️ Timeline Trigger: Dr. Paws stops moving!");
     }
+<<<<<<< HEAD
+=======
+  public void StartSimpleGreetings()
+{
+    animator.speed = 0.3f;
+     animator.SetBool("isSimpleGreetings", true);
+}
+
+
+>>>>>>> 1d9e94275dfe260f498f0e4f2ee682b7432b9aea
 
     void OnDrawGizmos()
     {
         if (pathPoints == null || pathPoints.Length < 2) return;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1d9e94275dfe260f498f0e4f2ee682b7432b9aea
         Gizmos.color = Color.cyan;
         for (int i = 0; i < pathPoints.Length - 1; i++)
         {
